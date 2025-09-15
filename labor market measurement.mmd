@@ -28,11 +28,9 @@ ibe1{Datum record}:::instance
 subgraph Universals
 direction RL
 	%% rdf:subclass
+	Q .-> |a| ENTITY
+	Object .-> |a| ENTITY
 	GDC .-> |a| ENTITY
-	MICE .-> |a| ENTITY
-	ICE .-> |a| ENTITY
-	IQE .-> |a| ENTITY
-	IBE .-> |a| ENTITY
 	
 	MICE --> |subclass| ICE
 	ICE --> |subclass| GDC
@@ -43,7 +41,7 @@ end
 subgraph Instances and literals
 direction LR
     %% rdf:type
-    lm --> |a| ENTITY
+    lm .-> |a| ENTITY
 	ice1 --> |a| MICE
 	iqe1 --> |a| IQE
 	ibe1 --> |a| IBE
@@ -52,5 +50,4 @@ direction LR
 	ice1 --> |is about| lm
 	ice1 --> |is concretized by| iqe1
 	iqe1 --> |inheres in| ibe1
-end	   
-	
+end	 
