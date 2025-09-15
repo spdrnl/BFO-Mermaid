@@ -1,0 +1,45 @@
+graph LR
+
+%% Definitions
+classDef universal fill:#ffe680
+classDef instance fill:#dbc9ef
+classDef literal fill:#ffffff
+
+%% Universals
+GDC[Generically Dependent Continuant]:::universal
+ICE[Information Content Entity]:::universal
+MICE[Measurement Information Content Entity]:::universal
+Q[Quality]:::universal
+IQE[Information Quality Entity]:::universal
+Object[object]:::universal
+IBE[Information Bearing Entity]:::universal
+
+%% Instances
+lm{labor market}:::instance
+ice1{Labor market measurement}:::instance
+iqe1{Measurement datum}:::instance
+ibe1{Datum record}:::instance
+
+%% Literals
+
+%% Relationships
+
+subgraph Universals
+	%% rdf:subclass
+	MICE --> |subclass| ICE
+	ICE --> |subclass| GDC
+	IQE --> |subclass| Q
+	IBE --> |subclass| Object
+end
+	
+subgraph Literals
+    %% rdf:type
+	ice1 --> |a| MICE
+	iqe1 --> |a| IQE
+	ibe1 --> |a| IBE
+	
+	%% Other
+	ice1 --> |is about| lm
+	ice1 --> |is concretized by| iqe1
+	iqe1 --> |inheres in| ibe1
+end	  
