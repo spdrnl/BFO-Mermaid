@@ -1,4 +1,4 @@
-graph BT
+graph RL
 
 %% Definitions
 classDef universal fill:#ffe680
@@ -26,7 +26,7 @@ ibe1{Datum record}:::instance
 %% Relationships
 
 subgraph Universals
-    direction BT
+direction RL
 	%% rdf:subclass
 	GDC .-> |a| ENTITY
 	MICE .-> |a| ENTITY
@@ -40,8 +40,8 @@ subgraph Universals
 	IBE --> |subclass| Object
 end
 
-subgraph Literals
-   direction LR
+subgraph Instances and literals
+direction LR
     %% rdf:type
     lm --> |a| ENTITY
 	ice1 --> |a| MICE
@@ -52,5 +52,5 @@ subgraph Literals
 	ice1 --> |is about| lm
 	ice1 --> |is concretized by| iqe1
 	iqe1 --> |inheres in| ibe1
-end	  
+end	   
 	
