@@ -1,4 +1,4 @@
-graph LR
+graph BT
 
 %% Definitions
 classDef universal fill:#ffe680
@@ -6,6 +6,7 @@ classDef instance fill:#dbc9ef
 classDef literal fill:#ffffff
 
 %% Universals
+ENTITY[Entity]:::universal
 GDC[Generically Dependent Continuant]:::universal
 ICE[Information Content Entity]:::universal
 MICE[Measurement Information Content Entity]:::universal
@@ -25,15 +26,24 @@ ibe1{Datum record}:::instance
 %% Relationships
 
 subgraph Universals
+    direction BT
 	%% rdf:subclass
+	GDC .-> |a| ENTITY
+	MICE .-> |a| ENTITY
+	ICE .-> |a| ENTITY
+	IQE .-> |a| ENTITY
+	IBE .-> |a| ENTITY
+	
 	MICE --> |subclass| ICE
 	ICE --> |subclass| GDC
 	IQE --> |subclass| Q
 	IBE --> |subclass| Object
 end
-	
+
 subgraph Literals
+   direction LR
     %% rdf:type
+    lm --> |a| ENTITY
 	ice1 --> |a| MICE
 	iqe1 --> |a| IQE
 	ibe1 --> |a| IBE
@@ -43,3 +53,4 @@ subgraph Literals
 	ice1 --> |is concretized by| iqe1
 	iqe1 --> |inheres in| ibe1
 end	  
+	
